@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 /**
  FXML Modify part controller. This class is the controller for our ModPartMenu FXML.
- @author Peter Chouinard.
+ @author Peter
  */
 public class ModPartController implements Initializable{
 

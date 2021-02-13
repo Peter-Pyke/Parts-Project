@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 /**
  FXML add part controller class.
  This class is the controller for our AddPartMenu FXML.
- @author Peter Chouinard
+ @author Peter
  */
 public class AddPartController implements Initializable {
 

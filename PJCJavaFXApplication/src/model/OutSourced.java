@@ -1,7 +1,7 @@
 package model;
 /**
  OutSourced Part Class. This class will be used to create out sourced parts.
- @author Peter Chouinard.
+ @author Peter.
  */
 public class OutSourced extends Part
 {

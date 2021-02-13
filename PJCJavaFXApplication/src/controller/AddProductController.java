@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 /**
  FXML add product controller class. This class is the controller for our AddProductMenu FXML.
- @author Peter Chouinard
+ @author Peter
  */
 public class AddProductController implements Initializable{
     Stage stage;

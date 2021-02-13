@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 
 /**
  FXML Modify Product controller. This class is the controller for our modify product menu FXML.
- @author Peter Chouinard.
+ @author Peter
  */
 public class ModProductController implements Initializable
 {

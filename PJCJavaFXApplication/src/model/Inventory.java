@@ -6,12 +6,13 @@ import javafx.collections.ObservableList;
 
 /**
   Inventory class. Holds data for parts and products, has methods to retrieve and modify data.
- @author Peter Chouinard.
+ @author Peter.
  */
 public class Inventory {
 
     private static ObservableList<Part> allParts = FXCollections.observableArrayList();
     private static ObservableList<Product> allProducts = FXCollections.observableArrayList();
+    private static ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
     /**
      This method adds a part to the allParts list.
      This method will be called when the save button is clicked inside the add part menu.
@@ -39,6 +40,12 @@ public class Inventory {
      @return np matched part
 
      */
+    /**
+     * This method will add a Customer to the allCustomer list.
+     * @param customer The Customer to be added.
+     */
+    public static void addCustomer(Customer customer){ allCustomers.add(customer);}
+
     public static Part lookupPart(int partId)
     {
         ObservableList<Part> allParts = Inventory.getAllParts();
@@ -155,5 +162,9 @@ public class Inventory {
      @return allProducts list.
      */
     public static ObservableList<Product> getAllProducts(){return allProducts;}
-
+    /**
+     * This method will return all Customers.
+     * @return allCustomers list.
+     */
+    public static ObservableList<Customer> getAllCustomers(){return allCustomers;}
 }

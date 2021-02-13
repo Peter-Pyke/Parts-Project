@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 
 /**
  FXML MainMenu controller. This is the main scene and will be loaded first.
- @author Peter Chouinard.
+ @author Peter
  */
 public class MainMenuController implements Initializable
 {

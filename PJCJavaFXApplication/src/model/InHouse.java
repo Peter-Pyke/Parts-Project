@@ -1,7 +1,7 @@
 package model;
 /**
  InHouse Part Class. This class will be used to create in house parts.
- @author Peter Chouinard.
+ @author Peter
  */
 public class InHouse extends Part
 {

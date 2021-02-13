@@ -8,10 +8,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.Inventory;
 import model.Product;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class AddCustomerMenu {
         Stage stage;
@@ -83,5 +87,12 @@ public class AddCustomerMenu {
 
         }
 
-    }
-
+        @Override
+        public void initialize(URL url, ResourceBundle rb) {
+                addProductTopTable.setItems(Inventory.getAllProducts());
+                productIDCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+                productNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+                invLevelCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+                priceCostPerUnitCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        }
+}

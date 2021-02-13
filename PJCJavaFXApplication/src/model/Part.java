@@ -5,7 +5,7 @@ package model;
  */
 
 /**
- @author Peter Chouinard.
+ @author Peter.
  */
 public abstract class Part {
     private int id;
