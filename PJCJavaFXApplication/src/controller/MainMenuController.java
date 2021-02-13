@@ -247,6 +247,13 @@ public class MainMenuController implements Initializable
         }
         productTable.setItems(products);
     }
+    @FXML
+    void onCustomerMenu(ActionEvent event) throws IOException{
+        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("/view/AddCustomerMenu.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
+    }
     /**
      Initializes the Main Menu controller class.
      @param rb

@@ -135,7 +135,12 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Button mnemonicParsing="false" onAction="#onActionExit" text="Exit" />
+                  <Button mnemonicParsing="false" onAction="#onCustomerMenu" prefHeight="25.0" prefWidth="131.0" text="Customer Menu">
+                     <HBox.margin>
+                        <Insets right="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onActionExit" text="Exit" />
                </children>
                <opaqueInsets>
                   <Insets />
