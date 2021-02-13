@@ -6,6 +6,10 @@ import javafx.scene.Parent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import model.InHouse;
+import model.Inventory;
+import model.Part;
+import model.Product;
 
 
 /**
@@ -44,7 +48,10 @@ public class Main extends Application
      */
     public static void main(String[] args)
     {
-
+        Product product = new Product(1, "box",12.22, 12, 15, 20);
+        InHouse part = new InHouse(2, "wheel", 12.22, 12, 10, 15, 100);
+        Inventory.addPart(part);
+        Inventory.addProduct(product);
         // Launches the application.
         launch(args);
     }
