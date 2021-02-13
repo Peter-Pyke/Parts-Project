@@ -13,7 +13,7 @@ FXML Main Class. This is the starting point of the application. COMPATIBLE FEATU
  I think for the next version the addition of projects would be useful. While I was working as a manufacturing engineer
  we had various projects each building different products. A new class could be created for project and products could
  be associated with different projects.
- @author Peter Chouinard.
+ @author Peter.
  */
 public class Main extends Application
 {

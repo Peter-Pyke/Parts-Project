@@ -6,7 +6,7 @@ import javafx.collections.ObservableList;
 /**
  Product class.
  This class is used to create our Products.
- @author Peter Chouinard.
+ @author Peter.
  */
 public class Product {
 
