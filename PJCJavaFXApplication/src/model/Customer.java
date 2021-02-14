@@ -18,8 +18,8 @@ public class Customer {
 
     }
 
+public void addAssociatedProduct (Product product){ associatedProducts.add(product);}
 
-
-
+public ObservableList<Product> getAssociatedProduct (){return associatedProducts;}
 
 }

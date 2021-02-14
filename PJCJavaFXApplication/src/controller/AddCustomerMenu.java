@@ -11,6 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.Customer;
 import model.Inventory;
 import model.Product;
 
@@ -21,6 +22,7 @@ import java.util.ResourceBundle;
 public class AddCustomerMenu implements Initializable {
         Stage stage;
         Parent scene;
+        Customer myCustomer = new Customer(1, "Bob");
         @FXML
         private TableView<Product> addProductTopTable;
 
@@ -60,9 +62,14 @@ public class AddCustomerMenu implements Initializable {
         @FXML
         private TextField addCustomerNameTxt;
 
+        public void addSelectedProduct() {
+                Product myProduct = addProductTopTable.getSelectionModel().getSelectedItem();
+                myCustomer.addAssociatedProduct(myProduct);
+                addProductBotTable.setItems(myCustomer.getAssociatedProduct());
+        }
         @FXML
         void onActionAddProductToCustomer(ActionEvent event) {
-
+        addSelectedProduct();
         }
 
         @FXML
@@ -95,5 +102,10 @@ public class AddCustomerMenu implements Initializable {
                 productNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
                 invLevelCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
                 priceCostPerUnitCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+                colProductID.setCellValueFactory(new PropertyValueFactory<>("id"));
+                colProductName.setCellValueFactory(new PropertyValueFactory<>("name"));
+                invCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+                colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
         }
 }
