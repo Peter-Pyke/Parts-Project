@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AddCustomerMenu implements Initializable {
+public class AddCustomerMenu implements Initializable{
         Stage stage;
         Parent scene;
         Customer myCustomer = new Customer(1, "Bob");
