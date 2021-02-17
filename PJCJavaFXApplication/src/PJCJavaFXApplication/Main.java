@@ -48,10 +48,18 @@ public class Main extends Application
      */
     public static void main(String[] args)
     {
-        Product product = new Product(1, "box",12.22, 12, 15, 20);
-        InHouse part = new InHouse(2, "wheel", 12.22, 12, 10, 15, 100);
+        Product product = new Product(1, "Laser",12.22, 16, 15, 20);
+        InHouse part = new InHouse(2, "Wheel", 12.22, 12, 10, 15, 100);
+        Product product2 = new Product(3, "Car",12.22, 18, 15, 20);
+        InHouse part2 = new InHouse(4, "HeadLight", 12.22, 12, 10, 15, 101);
+        Product product3 = new Product(5, "TV",12.22, 19, 15, 20);
+        InHouse part4 = new InHouse(6, "PCB", 12.22, 12, 10, 15, 102);
         Inventory.addPart(part);
+        Inventory.addPart(part2);
+        Inventory.addPart(part4);
         Inventory.addProduct(product);
+        Inventory.addProduct(product2);
+        Inventory.addProduct(product3);
         // Launches the application.
         launch(args);
     }

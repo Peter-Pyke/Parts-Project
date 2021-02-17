@@ -1,18 +1,17 @@
 package controller;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Customer;
 import model.Inventory;
+import model.Part;
 import model.Product;
 
 import java.io.IOException;
@@ -64,8 +63,17 @@ public class AddCustomerMenu implements Initializable{
 
         public void addSelectedProduct() {
                 Product myProduct = addProductTopTable.getSelectionModel().getSelectedItem();
-                myCustomer.addAssociatedProduct(myProduct);
-                addProductBotTable.setItems(myCustomer.getAssociatedProduct());
+
+                        if (!addProductBotTable.getItems().contains(myProduct)){
+                                myCustomer.addAssociatedProduct(myProduct);
+                                addProductBotTable.setItems(myCustomer.getAssociatedProduct());
+                         }
+                        else {
+                                Alert error = new Alert(Alert.AlertType.WARNING);
+                                error.setTitle("Warning Dialog");
+                                error.setContentText("Duplicate products are not allowed.");
+                                error.showAndWait();
+                        }
         }
         @FXML
         void onActionAddProductToCustomer(ActionEvent event) {
@@ -82,21 +90,52 @@ public class AddCustomerMenu implements Initializable{
 
         @FXML
         void onActionRemoveAssociatedProduct(ActionEvent event) {
-
+                Product selectedProduct = addProductBotTable.getSelectionModel().getSelectedItem();
+                addProductBotTable.getItems().remove(selectedProduct);
         }
 
         @FXML
-        void onActionSaveCustomer(ActionEvent event) {
-
+        void onActionSaveCustomer(ActionEvent event) throws IOException {
+                int id = Integer.parseInt(addCustomerIDTxt.getText());
+                String name = addCustomerNameTxt.getText();
+                Customer customer = new Customer(id, name);
+                int index = 0;
+                while(index < addProductBotTable.getItems().size()){
+                        customer.addAssociatedProduct(addProductBotTable.getItems().get(index));
+                        index++;
+                }
+                stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+                scene = FXMLLoader.load(getClass().getResource("/view/MainMenu.fxml"));
+                stage.setScene(new Scene(scene));
+                stage.show();
         }
 
         @FXML
         void onActionSearchBox(ActionEvent event) {
+                String nameOrId = cusMenuProductSearchTxt.getText();
+                ObservableList<Product> products = Inventory.lookupProduct(nameOrId);
+                //This checks to see if the person entered a product id instead of the name and returns the product whose id matches.
+                if (products.size() == 0)
+                {
+                        try {
+                                int productId = Integer.parseInt(nameOrId);
+                                Product np = Inventory.lookupProduct(productId);
 
+                                if (np != null)
+                                        products.add(np);
+
+                        } catch (NumberFormatException e)
+                        {
+                                //ignore
+                        }
+                }
+                addProductTopTable.setItems(products);
         }
+
 
 @Override
         public void initialize(URL url, ResourceBundle rb) {
+                addCustomerIDTxt.setText(String.valueOf(Inventory.getAllCustomers().size()+1));
                 addProductTopTable.setItems(Inventory.getAllProducts());
                 productIDCol.setCellValueFactory(new PropertyValueFactory<>("id"));
                 productNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
