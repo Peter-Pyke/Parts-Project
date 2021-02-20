@@ -157,8 +157,8 @@ public class AddCustomerMenu implements Initializable{
         public void initialize(URL url, ResourceBundle rb) {
 
                 customerViewTable.setItems(Inventory.getAllCustomers());
-                cusIDCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-                cusNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+                cusIDCol.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("id"));
+                cusNameCol.setCellValueFactory(new PropertyValueFactory<Customer, String>("name"));
 
                 addCustomerIDTxt.setText(String.valueOf(Inventory.getAllCustomers().size()+1));
                 addProductTopTable.setItems(Inventory.getAllProducts());

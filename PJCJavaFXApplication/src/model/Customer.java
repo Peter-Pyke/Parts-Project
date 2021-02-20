@@ -23,6 +23,12 @@ public class Customer {
     public void setName(String name){
         this.name = name;
     }
+    public int getId(){
+        return id;
+    }
+    public String getName(){
+        return name;
+    }
 public void addAssociatedProduct (Product product){ associatedProducts.add(product);}
 
 public ObservableList<Product> getAssociatedProduct (){return associatedProducts;}
