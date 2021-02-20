@@ -1,4 +1,5 @@
 package controller;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import model.Customer;
 import model.Inventory;
 import model.Part;
@@ -51,6 +53,15 @@ public class AddCustomerMenu implements Initializable{
 
         @FXML
         private TableColumn<Product, Double> colPrice;
+
+        @FXML
+        private TableView<Customer> customerViewTable;
+
+        @FXML
+        private TableColumn<Customer, Integer> cusIDCol;
+
+        @FXML
+        private TableColumn<Customer, String> cusNameCol;
 
         @FXML
         private TextField cusMenuProductSearchTxt;
@@ -98,12 +109,14 @@ public class AddCustomerMenu implements Initializable{
         void onActionSaveCustomer(ActionEvent event) throws IOException {
                 int id = Integer.parseInt(addCustomerIDTxt.getText());
                 String name = addCustomerNameTxt.getText();
-                Customer customer = new Customer(id, name);
+                Customer newCustomer = new Customer(id, name);
                 int index = 0;
                 while(index < addProductBotTable.getItems().size()){
-                        customer.addAssociatedProduct(addProductBotTable.getItems().get(index));
+                        Product productToAdd = addProductBotTable.getItems().get(index);
+                        newCustomer.addAssociatedProduct(productToAdd);
                         index++;
                 }
+                Inventory.addCustomer(newCustomer);
                 stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
                 scene = FXMLLoader.load(getClass().getResource("/view/MainMenu.fxml"));
                 stage.setScene(new Scene(scene));
@@ -131,10 +144,22 @@ public class AddCustomerMenu implements Initializable{
                 }
                 addProductTopTable.setItems(products);
         }
+        @FXML
+        void onActionModCus(ActionEvent event) {
 
+        }
+        @FXML
+        void onActionRemoveCus(ActionEvent event) {
+
+        }
 
 @Override
         public void initialize(URL url, ResourceBundle rb) {
+
+                customerViewTable.setItems(Inventory.getAllCustomers());
+                cusIDCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+                cusNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+
                 addCustomerIDTxt.setText(String.valueOf(Inventory.getAllCustomers().size()+1));
                 addProductTopTable.setItems(Inventory.getAllProducts());
                 productIDCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -146,5 +171,7 @@ public class AddCustomerMenu implements Initializable{
                 colProductName.setCellValueFactory(new PropertyValueFactory<>("name"));
                 invCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
                 colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+
         }
 }

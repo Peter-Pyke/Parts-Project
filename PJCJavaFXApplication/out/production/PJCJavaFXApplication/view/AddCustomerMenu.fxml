@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddCustomerMenu">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddCustomerMenu">
    <children>
       <GridPane hgap="10.0" layoutX="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="384.0" vgap="10.0">
         <columnConstraints>
@@ -95,7 +95,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <GridPane alignment="CENTER_RIGHT" hgap="10.0" layoutX="14.0" layoutY="14.0" prefHeight="299.0" prefWidth="341.0" vgap="10.0">
+      <GridPane alignment="CENTER_RIGHT" hgap="10.0" layoutX="14.0" layoutY="14.0" prefHeight="159.0" prefWidth="341.0" vgap="10.0">
          <columnConstraints>
             <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="96.19999389648437" minWidth="5.0" prefWidth="96.19999389648437" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.79999999999998" minWidth="10.0" prefWidth="125.0000244140625" />
@@ -106,14 +106,10 @@
             <RowConstraints maxHeight="48.600006103515625" minHeight="10.0" prefHeight="43.19997940063477" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="56.60000610351562" minHeight="10.0" prefHeight="35.20002059936524" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="64.60000610351562" minHeight="10.0" prefHeight="40.59999389648439" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="65.5999755859375" minHeight="10.0" prefHeight="39.599999999999994" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="65.80000305175781" minHeight="10.0" prefHeight="34.4000244140625" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="65.39996337890622" minHeight="10.0" prefHeight="36.79999694824215" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" text="ID" GridPane.rowIndex="1" />
             <Label alignment="CENTER" text="Name" GridPane.rowIndex="2" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label alignment="TOP_CENTER" prefHeight="17.0" prefWidth="115.0" text="Add Customer">
@@ -131,13 +127,30 @@
                <children>
                   <TextField fx:id="addCustomerNameTxt" prefWidth="150.0" />
                </children></HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </GridPane>
+      <VBox alignment="CENTER" layoutX="75.0" layoutY="269.0" prefHeight="250.0" prefWidth="270.0">
+         <children>
+            <Label text="Current Customers" />
+            <TableView fx:id="customerViewTable" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn fx:id="cusIDCol" prefWidth="134.00000762939453" text="ID" />
+                <TableColumn fx:id="cusNameCol" prefWidth="134.66664123535156" text="Name" />
+              </columns>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </TableView>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="60.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onActionModCus" text="Modify" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onActionRemoveCus" text="Remove" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
