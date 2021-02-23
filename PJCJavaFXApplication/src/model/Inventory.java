@@ -135,6 +135,12 @@ public class Inventory {
         allProducts.set(index, selectedProduct);
     }
     /**
+     This method is used to replace an old Customer with an updated Customer.
+     @param selectedCustomer updated Customer.
+     @param index index of old Customer.
+     */
+    public static void updateCustomer(int index, Customer selectedCustomer){allCustomers.set(index, selectedCustomer);}
+    /**
      This method will be called when deleting parts.
      @param part part to be deleted.
      @return updated inventory.
@@ -149,6 +155,12 @@ public class Inventory {
      @return updated inventory.
      */
     public static boolean deleteProduct(Product product){ return Inventory.getAllProducts().remove(product);}
+    /**
+     * This method will be called when deleting customer.
+     * @param customer the selected customer.
+     * @return updated inventory.
+     */
+    public static boolean deleteCustomer(Customer customer) {return Inventory.getAllCustomers().remove(customer);}
     /**
      This method will return all Parts.
      @return returns allParts list.

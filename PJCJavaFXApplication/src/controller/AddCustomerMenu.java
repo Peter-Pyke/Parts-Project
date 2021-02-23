@@ -145,12 +145,21 @@ public class AddCustomerMenu implements Initializable{
                 addProductTopTable.setItems(products);
         }
         @FXML
-        void onActionModCus(ActionEvent event) {
+        void onActionModCus(ActionEvent event) throws IOException {
 
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/view/ModCustomerMenu.fxml"));
+                Parent modCustomerScene = loader.load();
+                Scene scene = new Scene(modCustomerScene);
+                ModCustomerController pass = loader.getController();
+                pass.passCustomer(customerViewTable.getSelectionModel().getSelectedItem());
+                stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
         }
         @FXML
         void onActionRemoveCus(ActionEvent event) {
-
+        Inventory.deleteCustomer(customerViewTable.getSelectionModel().getSelectedItem());
         }
 
 @Override
