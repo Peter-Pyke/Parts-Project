@@ -1,5 +1,5 @@
 package controller;
-import javafx.beans.value.ObservableValue;
+
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,10 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import model.Customer;
 import model.Inventory;
-import model.Part;
 import model.Product;
 
 import java.io.IOException;
